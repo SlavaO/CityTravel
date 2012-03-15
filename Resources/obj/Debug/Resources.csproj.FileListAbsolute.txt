@@ -1,0 +1,11 @@
+d:\City_Travel\CityTravel\Resources\bin\Debug\Resources.dll
+d:\City_Travel\CityTravel\Resources\bin\Debug\Resources.pdb
+d:\City_Travel\CityTravel\Resources\bin\Debug\ru\Resources.resources.dll
+d:\City_Travel\CityTravel\Resources\obj\Debug\ResolveAssemblyReference.cache
+d:\City_Travel\CityTravel\Resources\obj\Debug\Resources.Resources.resources
+d:\City_Travel\CityTravel\Resources\obj\Debug\Resources.Resources.ru.resources
+d:\City_Travel\CityTravel\Resources\obj\Debug\GenerateResource.read.1.tlog
+d:\City_Travel\CityTravel\Resources\obj\Debug\GenerateResource.write.1.tlog
+d:\City_Travel\CityTravel\Resources\obj\Debug\ru\Resources.resources.dll
+d:\City_Travel\CityTravel\Resources\obj\Debug\Resources.dll
+d:\City_Travel\CityTravel\Resources\obj\Debug\Resources.pdb

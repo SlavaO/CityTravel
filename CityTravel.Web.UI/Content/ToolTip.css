@@ -1,0 +1,15 @@
+﻿
+#tooltip 
+{ 
+	position:absolute; 
+	padding:10px; 
+	background:#555; 
+	color:#fff; 
+	min-width:75px; 
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-left: 6px solid transparent;
+    padding: 3px 8px;
+    white-space: nowrap;
+}
+

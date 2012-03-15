@@ -1,0 +1,44 @@
+﻿#nav li
+{
+    float: left;
+    position: relative;
+    list-style: none;
+    -moz-box-shadow: 3px 3px 3px #222;
+    -webkit-box-shadow: 3px 3px 3px #222;
+    box-shadow: 3px 3px 3px #222;
+    margin:1px;
+}
+
+/* main level link */
+#nav a
+{
+    font-weight: bold;
+    color: #ffffff;
+    background: #c6c6c6;
+    text-decoration: none;
+    display: block;
+    padding: 20px 20px;
+}
+
+#nav .current a, #nav a:hover
+{
+    background: #e6e6e6;
+    color: #444;
+}
+
+
+/* clearfix */
+#nav:after
+{
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+* html #nav
+{
+    height: 1%;
+}

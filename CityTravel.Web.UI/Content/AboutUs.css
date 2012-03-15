@@ -1,0 +1,68 @@
+﻿.containerAboutUs
+{
+  display: inline-block;
+  padding: 14px;
+  margin: 14px;
+  background-color: #F8F8FF;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;	
+}
+
+.headerAboutUs
+{
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 27px;
+	font-weight: bold;
+	color: InfoText;
+}
+
+.containerAboutUs p
+{
+	font-size: 16px;
+	font-weight: 200;
+	line-height: 27px;	
+}
+
+div.additContColor p, .containerAboutUs
+{
+	text-indent: 32px;
+}
+
+.list
+{
+	display: inline-block;
+	padding: 0px;
+}
+
+.listitem
+{
+	display: list-item;
+	margin-left: 32px;
+	padding-left: 32px;
+	font-size: 16px;
+	font-weight: 200;
+	line-height: 27px;
+	text-align: justify;
+	float: left;
+}
+
+.listitem .well
+{
+	padding: 3px;
+}
+
+.image_container
+{
+	display: inline-block;
+	float: right;
+	display: inline;
+	margin: 0px 0px;
+	padding-right: 10px;
+}
+
+.image_container img
+{
+	border: 1px solid blue;
+}

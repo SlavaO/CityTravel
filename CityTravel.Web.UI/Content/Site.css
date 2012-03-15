@@ -1,0 +1,478 @@
+﻿/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*
+	MASTER PAGE WRAPPERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ 
+.master-wrapper-page
+{
+    margin: 10px auto;
+    width: 100%;
+    height: 100%;
+    min-width: 1000px;
+    max-width: 1200px;
+     
+}
+ 
+.master-wrapper-content
+{
+    text-align: left;
+}
+ 
+.master-wrapper-content-body
+{
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 10px;
+    min-height: 600px;
+    behavior: url(Content/PIE.htc);
+}
+ 
+ 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*
+	MASTER HEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.header
+{
+    min-width: 1000px;
+}
+ 
+#infoWindow
+{
+    text-align: center;
+}
+.header-logo
+{
+    float: left;
+    padding: 20px;
+}
+ 
+.header-links
+{
+    margin-left: 25%;
+    padding: 5px;
+}
+ 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*
+	MAKE ROUTE STYLES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ 
+.make-route-wrapper #tabs
+{
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    background: none;
+    border-width: 0px;
+    width: 308px;
+    position:relative; 
+}
+ 
+ 
+.make-route-wrapper #tabs .ui-tabs-nav
+{
+    padding-left: 0px;
+    background: transparent;
+    border-width: 0px 0px 1px 0px;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    behavior: url(Content/PIE.htc);
+}
+ 
+.make-route-wrapper #tabs .ui-tabs-panel
+{
+    border-width: 0px 1px 1px 1px;
+    padding: 3px;
+}
+ 
+.make-route-wrapper #find-route {
+    width: 300px;
+}
+ 
+.make-route-wrapper #controls
+{
+    padding: 10px;
+    
+}
+ 
+.make-route-wrapper #controls input[type="text"]
+{
+    width: 90%;
+}
+
+.make-route-wrapper #controls input[type="image"]
+{
+    width:  30px;
+    height: 30px;
+    vertical-align: middle;
+    
+}
+
+ 
+.make-route-wrapper #controls .address
+{
+    margin: 5px;
+    padding: 5px;
+}
+ 
+.make-route-wrapper #controls .addressError
+{
+    display: block;
+    font-size: 12px;
+}
+ 
+.make-route-wrapper #map-wrapper
+{
+    margin-left: 27%;
+    padding: 10px;
+    min-width: 500px;
+    position: relative;
+}
+ 
+.make-route-wrapper #map-wrapper #googleMap
+{
+    min-height: 600px;
+    position: relative;
+}
+ 
+.make-route-wrapper #map-wrapper #legend
+{
+    position: absolute;
+    float: right;
+    text-align: left;
+    width: 180px;
+    min-height: 50px;
+    top: 50px;
+    right: 15px;
+    filter: alpha(Opacity=50);
+    background-color: White;
+    z-index: 0;
+    opacity: 0.5;
+    behavior: url(Content/PIE.htc);
+}
+ 
+/* .make-route-wrapper #map-wrapper #legend */ .legendEntityBar
+{
+    display: inline-block;
+    width: 30px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+ 
+/*  .make-route-wrapper #map-wrapper #legend  */ .legendEntityText
+{
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 13px;
+    vertical-align: middle;
+}
+ 
+/*  .make-route-wrapper #map-wrapper #legend  */ .transportTypeWalking
+{
+    border-top: 3px solid #00FF00;
+}
+ 
+/*   .make-route-wrapper #map-wrapper #legend  */  .transportTypeBus
+{
+    border-top: 3px solid #0000FF;
+}
+ 
+.make-route-wrapper #buttons
+{
+    position: static; /* Àáñîëþòíîå ïîçèöèîíèðîâàíèå */
+    bottom: 15px; /* Ïîëîæåíèå îò íèæíåãî êðàÿ */
+    right: 45px; /* Ïîëîæåíèå îò ïðàâîãî êðàÿ */
+    line-height: 1px;
+ 
+}
+.make-route-wrapper #swap 
+{
+    width: 30px;
+    height: 30px;
+     position:absolute;
+	top: 100px;
+	left: 285px;
+    
+}
+ 
+.make-route-wrapper #Choose
+{
+    position: static; /* Àáñîëþòíîå ïîçèöèîíèðîâàíèå */
+    width:255px; 
+    text-align:left;
+}
+ 
+.make-route-wrapper #routes-list {
+    border: 1px solid grey;
+}
+ 
+.make-route-wrapper #routes-list-caption
+{
+    margin: 0px;
+    border-bottom: 1px solid grey;
+}
+ 
+.make-route-wrapper #routes-list ul
+{
+    max-height: 350px;
+    overflow: initial;
+}
+ 
+.make-route-wrapper #routes-list ul, .make-route-wrapper #routes-list li
+{
+    list-style: none;
+    padding: 1px;
+}
+ 
+.make-route-wrapper .route-box
+{
+    border-style: solid;
+    border-width: 1px;
+    height: 85px;
+    width: 95%;
+    cursor: pointer;
+    
+    display: inline-block;
+}
+ 
+.make-route-wrapper .route-box:hover
+{
+    background-color: rgb(255, 92, 92);
+}
+ 
+.make-route-wrapper .selected, .make-route-wrapper .selected:hover
+{
+    background-color: greenyellow;
+}
+ 
+.make-route-wrapper .route-box-header
+ {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    border: rgb(5, 5, 5) 1px solid;
+    text-align: left;
+    background-color: rgb(245, 245, 245);
+    display: inline-block;
+}
+ 
+.make-route-wrapper .route-box-header img
+{
+    margin-top: 1px;
+}
+ 
+.make-route-wrapper .selected .route-box-header {
+    background-color: greenyellow;
+}
+ 
+.make-route-wrapper .route-box .walking-last {
+    float:right;
+    margin-right: 120px;
+    width:50px;
+}
+ 
+.make-route-wrapper .route-box .walking {
+    width:50px;
+    margin-top:5px;
+}
+ 
+.make-route-wrapper .route-box .transport
+{
+    float:right;
+    width:50px;
+}
+ 
+.make-route-wrapper .route-box .transport-image {
+    position: relative;
+    top: -5px;
+}
+ 
+.make-route-wrapper .route-box .transport-number {
+    position: relative;
+    top: -14px;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*
+	FOOTER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.footer{
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 10px;
+    behavior: url(Content/PIE.htc);
+}
+ 
+.addroute_map {
+    display: inline-block;
+    float: left;
+}
+ 
+.AddStopFields {
+    display: inline-block;
+    
+}
+ 
+ 
+.AddRouteFields 
+{
+    margin-left: 30px;
+    display: inline-block;
+}
+ 
+ 
+/* Print  */
+ 
+/* Óáèðàåì íå íóæíûå ýëåìíòû ïðè ïå÷àòè */
+@media print
+{
+	/* #PrintWin { border: none; }  */
+ 
+	/* .closeButt { display: none; }  */
+ 
+ 
+ 
+	.footer { display: none; }
+	/* .make-route-wrapper { display: none; }  */
+ 
+	
+	.master-wrapper-page { display: none; }
+ 
+}
+ 
+#PrintWin
+{
+	position: absolute;
+	display: none;
+ 
+	width: 950px;
+    min-height: 530px;
+}
+ 
+.PrintTxtHeader
+{
+	color: Black;
+	text-align: center;
+ 
+}
+ 
+/* css íàäïèñè "Ìåñòî íàçíà÷åíèÿ" */
+.PrintTxtDest
+{
+	margin-left: 32px;
+	font-weight: bold;
+}
+ 
+.PrintTxtAddr
+{
+	display: inline-block;
+	font-weight: normal;
+ 
+}
+ 
+#PrintLegend
+{
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	display: inline-block;
+	float: right;
+	width: 138px;
+ 
+    behavior: url(Content/PIE.htc);	
+ 
+}
+ 
+.ContextMenuGoogle {
+	position: absolute;
+	z-index: 1000;
+}
+ 
+#printMap
+{
+	position: relative;
+	width: 640px;
+	min-height: 600px;
+	text-align: center;
+	margin: 0 auto;
+	border: none;
+ 
+	/* opacity: 1.0; */
+ 
+}
+ 
+.TextVerHeader
+{
+	position: relative;
+	text-align: center;
+}
+ 
+.ContextMenuGoogle {
+	position: absolute;
+	z-index: 1000;
+	display:none;
+	width: 70px;
+	background: #eee;
+	border:1px solid #777;
+	
+ 
+}
+ 
+.ContextMenuGoogle ul {
+ 
+	padding: 3px 0px;
+	margin: 0px;
+   	border: solid 1px #fff;
+}
+ 
+.ContextMenuGoogle li {
+	list-style: none;
+	padding: 0px 1px;
+	margin:  auto;
+	border-bottom:1px solid #777;
+	cursor:pointer; 
+	
+}
+ 
+.ContextMenuPointGoogle:hover
+{
+    background-color: #BEBEBE;
+ 
+}
+ 
+.ContextMenuMarkerImg
+{
+	display: inline-block;
+	float: left;
+	
+	width: 14px;
+	height: 22px;
+ 
+}
+ 
+ 
+/*
+ 
+ 
+.ContextMenuGoogle a {
+	display: block;
+	color: #000;
+	text-decoration: none;
+	line-height: 22px;
+	height: 22px;
+	padding: 1px 8px;
+}
+ 
+.ContextMenuGoogle ul li:hover a {
+	padding: 0px 7px;
+	background-color: #ffffff;
+	border: 1px solid #A2C1FA;
+	border-radius:2px;
+}
+ 
+.ContextMenuGoogle li.separator div {
+	margin: 3px 0px;
+	border-top: solid 1px #ccc;
+	border-bottom: solid 1px #fff;
+}
+ 
+*/

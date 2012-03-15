@@ -1,0 +1,71 @@
+﻿@using SquishIt.Framework
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Bootstrap.min.css")"/>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Bootstrap-responsive.min.css")"/>
+    @Html.Raw(Bundle.Css()
+        .Add("~/Content/Base.css")
+        .Add("~/Content/AddRoute.css")
+        .Add("~/Content/Controls.css")
+        .Add("~/Content/Map.css")
+        .Add("~/Content/Print.css")
+        .ForceRelease()
+        .Render("~/Content/combined_#.css")
+    )
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">!window.jQuery && document.write(unescape('%3Cscript src="Scripts/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
+    <!--IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </a><a class="brand" href="@Url.Action("Index", "MakeRoute")">CityTravel</a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="@Url.Action("Index", "MakeRoute")"><i class="icon-move icon-white">
+                        </i>@Resources.FindRoute</a></li>
+                        @*<li><a href="#"><i class="icon-road icon-white"></i> @Resources.TransportList</a></li>*@
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li><a href="#"><i class="icon-question-sign icon-white"></i> @Resources.Help</a></li>
+                        <li id="nav-about-us"><a href="@Url.Action("AboutUs", "MakeRoute")" ><i class="icon-user icon-white"></i> @Resources.AboutUs</a></li>
+                        <li><a data-toggle="modal" href="#feedback"><i class="icon-pencil icon-white"></i> @Resources.Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid main-container">
+        @RenderBody()
+        @Html.Action("FeedbackForm", "Feedback")
+    </div>
+    @Html.Raw(Bundle.JavaScript()
+            .Add("~/Scripts/jquery.unobtrusive-ajax.min.js")
+            .Add("~/Scripts/jquery.validate.min.js")
+            .Add("~/Scripts/jquery.validate.unobtrusive.min.js")
+            .Add("~/Scripts/bootstrap.min.js")
+            .Add("~/Scripts/bootstrap-typeahead.js")
+            .Add("~/Scripts/bootstrap-button.js")
+            .Add("~/Scripts/bootstrap-tooltip.js")
+            .ForceRelease()
+            .Render("~/scripts/combined_#.js")
+    )
+    <script type="text/javascript">
+        var localizedMessages = {};
+        localizedMessages["EnterLocation"] = "@Resources.EnterLocation";
+        localizedMessages["Sit"] = "@Resources.Sit";
+        localizedMessages["OnStop"] = "@Resources.OnStop";
+        localizedMessages["RideUntil"] = "@Resources.RideUntil";
+    </script>
+</body>
+</html>

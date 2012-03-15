@@ -1,0 +1,26 @@
+<div class="footer" style="margin-top:5px">
+    @Html.ActionLink(@Resources.AboutUs, "AboutUs", "MakeRoute")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".feedback").fancybox({
+                autoSize: false,
+                width: 450,
+                height: 400,
+                minWidth: 600,
+                minHeight: 400,
+                scrolling: 'no',
+                helpers: {
+                    title: {
+                        type: 'outside'
+                    },
+                    overlay: {
+                        speedIn: 300,
+                        opacity: 0.2
+                    }
+
+                }
+            });
+        });
+    </script>
+    <a class="feedback fancybox.ajax" href="@Url.Action("FeedbackForm", "Feedback")">@Resources.Feedback</a>
+</div>

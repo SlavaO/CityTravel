@@ -1,0 +1,151 @@
+﻿@using SquishIt.Framework
+@model CityTravel.Web.UI.Models.MakeRouteViewModel
+@{
+    ViewBag.Title = "CityTravel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("https://maps.googleapis.com/maps/api/js?v=3&libraries=places&libraries=geometry&language=ru&sensor=false&amp;key=ABQIAAAAp_RSJHSrOLSFwByjon74phSLsVbxq6dHeoLR1QV_qRgT4PSTrxTO-51YuK0iLyZz1OS01WSr1iR5EA")" type="text/javascript"></script>
+<!--[if IE]><script type="text/javascript" src=""~/Scripts/json2.js""></script><![endif]-->
+<div class="row-fluid">
+    <div class="sidebar well">
+        <div class="sidebar-content">
+            <div class="input-prepend">
+                <span class="add-on">А</span>
+                <input type="text" id="StartPointAddress" value="" placeholder="Введите адрес" data-bind="value: startPoint.name, valueUpdate: 'keypress', hasfocus: startPoint.isSelected"
+                    data-provide="typeahead" />
+                <span class="label" id="swap" data-bind='click: swap'><i class="icon-resize-vertical icon-white">
+                </i></span>
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">В</span>
+                <input type="text" id="EndPointAddress" value="" data-bind="value: endPoint.name, valueUpdate: 'keypress', hasfocus: endPoint.isSelected" placeholder="Введите адрес" data-provide="typeahead" />
+            </div>
+            <div id="buttons">
+                 <span class="btn-group" id="priority" data-toggle="buttons-radio">
+                    <button class="btn active" id="btn-time" data-bind="click: $root.sortByTime">
+                        <i class="icon-time"></i>Время</button>
+                    <button class="btn" id="btn-money" data-bind="click: $root.sortByMoney">
+                        <i class=" icon-fire"></i>Деньги</button>
+                </span>
+                <a id="makeRouteBtn" class="btn btn-success btn-large" data-bind="click: $root.getRoutes, enable:isPathPossible(),  css: {disabled: !isPathPossible()}">@Resources.MakeRoute</a>
+            </div>
+            <div id="routes-list" data-bind="slideVisibleLeft: routeListShown">
+                <ul data-bind="foreach: viewModel">
+                    <li class="route-box" data-bind="click: $parent.setCurrentRoute, css: {selected: selected()}">
+                        <div class="route-box-header">
+                            <img src="@Url.Content("~/Content/images/time.png")" alt=""/>
+                            <span data-bind="text: route.Time"></span>
+                            <img src="@Url.Content("~/Content/images/header_price.png")" alt=""/>
+                            <span data-bind="text: route.Price + ' грн'"></span>
+                            <img src="@Url.Content("~/Content/images/distance.gif")" alt=""/>
+                            <span data-bind="text: route.AllLength"></span>
+                            <img src="@Url.Content("~/Content/images/header_bus.png")" alt=""/>
+                            <span data-bind="text: route.BusLength"></span>
+                            <img src="@Url.Content("~/Content/images/header_walk.png")" alt="" data-bind="visible: route.Type.Type!='Walking'"/>
+                            <span data-bind="text: route.SummaryWalkingLength, visible: route.Type.Type!='Walking'">
+                            </span>
+                            <img src="@Url.Content("~/Content/images/header_walk.png")" alt="" data-bind="visible: route.Type.Type=='Walking'"/>
+                            <span data-bind="text: route.AllLength,visible: route.Type.Type=='Walking'"></span>
+                        </div>
+                        <div class="route-box-body">
+                            <div class="walking span3" data-bind="visible: route.Type.Type != 'Walking'">
+                                <img src="@Url.Content("~/Content/images/walk.png")" alt=""/>
+                                <span class="walking-text" data-bind="text: $parent.getWalkingRouteLength(route, 0)">
+                                </span>
+                            </div>
+                            <div class="walking span3" data-bind="visible: route.Type.Type == 'Walking'">
+                                <img src="@Url.Content("~/Content/images/walk.png")" alt=""/>
+                                <span class="walking-text" data-bind="text: route.AllLength"></span>
+                            </div>
+                            <div class="transport span3" data-bind="visible: route.Type.Type != 'Walking'">
+                                <img class="transport-image" src="@Url.Content("~/Content/images/bus.png")" alt="" data-bind="visible: route.Type.Type == 'Bus'"/>
+                                <img class="transport-image" src="@Url.Content("~/Content/images/trolleybus.png")" alt="" data-bind="visible: route.Type.Type == 'Trolleybus'"/>
+                                <img class="transport-image" src="@Url.Content("~/Content/images/tramway.png")" alt="" data-bind="visible: route.Type.Type == 'Tramway'"/>
+                                <img class="transport-image" src="@Url.Content("~/Content/images/subway.png")" alt="" data-bind="visible: route.Type.Type == 'Subway'"/>
+                                <span class="transport-number" data-bind="text: route.Number"></span>
+                            </div>
+                            <div class="walking span3" data-bind="visible: route.Type.Type != 'Walking'">
+                                <img src="@Url.Content("~/Content/images/walk.png")"  alt=""/>
+                                <span class="walking-text" data-bind="text: $parent.getWalkingRouteLength(route, 1)">
+                                </span>
+                            </div>
+                            <span class="label label-info infoBtn" data-bind="click: $root.textVersion.show"><i class="icon-info-sign icon-white"></i>
+                            </span><span class="label label-info printBtn"><i class="icon-print icon-white"></i></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="text-version-wrapper" data-bind="slideVisibleRight: textVersion.shown">
+                @*<div id="routes-list-mini">
+                    <div class="route-box-mini" data-bind="foreach: viewModel">
+                        <span class="label label-info" data-bind="click: $parent.setCurrentRoute"><i class="icon-arrow-left icon-white"></i></span>
+                    </div>
+                </div>*@
+
+                <div data-bind="foreach: textVersion.walkingSteps">
+                    <p data-bind="html: Instruction"></p>
+                    <span class="label label-success" data-bind="text: Time"></span><span class="label label-info" data-bind="text: Length"></span>
+                </div>
+                
+
+                <div data-bind="foreach: textVersion.stepsToLanding">
+                    <p data-bind="html: Instruction"></p>
+                    <span class="label label-success" data-bind="text: Time"></span><span class="label label-info" data-bind="text: Length"></span>
+                </div>
+                
+                
+                <p data-bind="text: textVersion.landOnInstruction"></p>
+                <span class="label label-success" data-bind="text: textVersion.waitingTime"></span>
+                <span class="label label-warning" data-bind="text: textVersion.price"></span>
+
+                <p data-bind="text: textVersion.landOffInstruction"></p>
+                <span class="label label-success" data-bind="text: textVersion.rideTime"></span>
+                <span class="label label-info" data-bind="text: textVersion.rideLength"></span>
+
+                <div data-bind="foreach: textVersion.stepsFromLanding">
+                    <p data-bind="html: Instruction"></p>
+                    <span class="label label-success" data-bind="text: Time"></span><span class="label label-info" data-bind="text: Length"></span>
+                </div>
+
+                <p>Итого:</p>
+                <span class="label label-success" data-bind="text: textVersion.summaryTime"></span>
+                <span class="label label-info" data-bind="text: textVersion.summaryPrice"></span>
+                <span class="label label-important" data-bind="text: textVersion.summaryLength"></span>
+                <span class="label label-info" data-bind="text: textVersion.busLength"></span>
+                <span class="label label-info" data-bind="text: textVersion.walkingLength"></span>
+                
+                <br/>
+                <a class="label label-info" data-bind="click: $root.textVersion.show" id="closeTextVersionBtn"><i class="icon-arrow-left icon-white"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="map-wrapper">
+        <div id="googleMap">
+        </div>
+        <div id="legend">
+        </div>
+        <div id="directions">
+        </div>
+        <div id="contextMenu">
+        </div>
+    </div>
+</div>
+<div id="tooltip"></div>
+<span id="imagePointA" class="btn btn-success"><i class="icon-map-marker"></i>A</span>
+<span id="imagePointB" class="btn btn-info"><i class="icon-map-marker"></i>B</span>
+<div id="PrintWin"></div>
+
+<script src="@Url.Content("~/Scripts/knockout-2.0.0.js")" type="text/javascript"></script>
+@Html.Raw(Bundle.JavaScript()
+    .Add("~/Scripts/ControlsNew.js")
+    .Add("~/Scripts/Helpers.js")
+    .Add("~/Scripts/PrintVersion.js")
+    .Add("~/Scripts/RouteListViewModel.js")
+    .Add("~/Scripts/Path.js")
+    .Add("~/Scripts/Main.js")
+    .Add("~/Scripts/Map.js")
+    .Add("~/Scripts/Legend.js")
+    .Add("~/Scripts/AutocompleteNew.js")
+    //.ForceRelease()
+    .Render("~/scripts/citytravel_#.js")
+)
